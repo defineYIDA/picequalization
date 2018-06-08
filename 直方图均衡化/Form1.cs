@@ -140,6 +140,29 @@ namespace 直方图均衡化
             }
         }
 
-        
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/1158558425/picequalization.git");
+        }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            Showpicture showpicture = new Showpicture();
+            showpicture.picture.Image = bitmap.Clone() as Image;
+            showpicture.Height = bitmap.Height;
+            showpicture.Width = bitmap.Width;
+            showpicture.Show();
+        }
+
+        private void pictureBox2_DoubleClick(object sender, EventArgs e)
+        {
+
+            Showpicture showpicture = new Showpicture();
+            showpicture.picture.Image = newbitmap.Clone() as Image;
+            showpicture.Height = newbitmap.Height;
+            showpicture.Width = newbitmap.Width;
+            showpicture.Show();
+
+        }
     }
 }

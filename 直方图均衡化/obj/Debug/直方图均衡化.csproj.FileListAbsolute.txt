@@ -8,3 +8,4 @@ c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\bin\Debug\直�
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\bin\Debug\直方图均衡化.pdb
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.exe
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.pdb
+C:\Users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.Showpicture.resources
