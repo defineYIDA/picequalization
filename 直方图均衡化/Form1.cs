@@ -192,5 +192,14 @@ namespace 直方图均衡化
 
 
         }
+        /// <summary>
+        /// 将这个界面设置为主界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();//退出应用程序
+        }
     }
 }

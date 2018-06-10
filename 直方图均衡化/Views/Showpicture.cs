@@ -16,5 +16,10 @@ namespace 直方图均衡化
         {
             InitializeComponent();
         }
+
+        private void picture_DoubleClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

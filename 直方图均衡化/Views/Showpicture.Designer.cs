@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Showpicture));
             this.picture = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
@@ -41,6 +42,7 @@
             this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picture.TabIndex = 0;
             this.picture.TabStop = false;
+            this.picture.DoubleClick += new System.EventHandler(this.picture_DoubleClick);
             // 
             // Showpicture
             // 
@@ -49,9 +51,10 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.picture);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Showpicture";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Showpicture";
+            this.Text = "Picture";
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
 
