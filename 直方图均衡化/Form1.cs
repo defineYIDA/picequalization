@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using 直方图均衡化.Controls;
 
 namespace 直方图均衡化
 {
@@ -16,10 +17,22 @@ namespace 直方图均衡化
         public Form1()
         {
             InitializeComponent();
+            //设置combox的初始项
+            comboBox1.SelectedIndex = 0;
         }
+        /// <summary>
+        /// 存储原始图像
+        /// </summary>
         Bitmap bitmap;
+        /// <summary>
+        /// 存储处理后图像
+        /// </summary>
         Bitmap newbitmap;
-        Stopwatch sw = new Stopwatch();
+        /// <summary>
+        /// 打开文件按钮，点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -29,7 +42,11 @@ namespace 直方图均衡化
                 pictureBox1.Image = bitmap.Clone() as Image;
             }
         }
-
+        /// <summary>
+        /// 保存图片按钮，点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             bool isSave = true;
@@ -86,65 +103,11 @@ namespace 直方图均衡化
                 }
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (bitmap != null)
-            {
-                newbitmap = bitmap.Clone() as Bitmap;//clone一个副本
-                int width = newbitmap.Width;
-                int height = newbitmap.Height;
-                int size = width * height;
-                //总像数个数
-                int[] gray = new int[256];
-                //定义一个int数组，用来存放各像元值的个数
-                double[] graydense = new double[256];
-                //定义一个float数组，存放每个灰度像素个数占比
-                for (int i = 0; i < width; ++i)
-                    for (int j = 0; j < height; ++j)
-                    {
-                        Color pixel = newbitmap.GetPixel(i, j);
-                        //计算各像元值的个数
-                        gray[Convert.ToInt16(pixel.R)] += 1;
-                        //由于是灰度只读取R值
-                    }
-                for (int i = 0; i < 256; i++)
-                {
-                    graydense[i] = (gray[i] * 1.0) / size;
-                    //每个灰度像素个数占比
-                }
-
-                for (int i = 1; i < 256; i++)
-                {
-                    graydense[i] = graydense[i]+ graydense[i - 1];
-                    //累计百分比
-                }
-            
-                for (int i = 0; i < width; ++i)
-                    for (int j = 0; j < height; ++j)
-                    {
-                        Color pixel = newbitmap.GetPixel(i, j);
-                        int oldpixel = Convert.ToInt16(pixel.R);//原始灰度
-                        int newpixel = 0;
-                        if (oldpixel == 0)
-                            newpixel = 0;
-                            //如果原始灰度值为0则变换后也为0
-                        else
-                            newpixel = Convert.ToInt16(graydense[Convert.ToInt16(pixel.R)] * 255);
-                            //如果原始灰度不为0，则执行变换公式为   <新像元灰度 = 原始灰度 * 累计百分比>
-                        pixel = Color.FromArgb(newpixel, newpixel, newpixel);
-                        newbitmap.SetPixel(i, j, pixel);//读入newbitmap
-                    }
-                pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
-                
-            }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/1158558425/picequalization.git");
-        }
-
+        /// <summary>
+        /// 双击浏览原始图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
             Showpicture showpicture = new Showpicture();
@@ -153,7 +116,11 @@ namespace 直方图均衡化
             showpicture.Width = bitmap.Width;
             showpicture.Show();
         }
-
+        /// <summary>
+        /// 双击浏览处理后图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
 
@@ -162,6 +129,67 @@ namespace 直方图均衡化
             showpicture.Height = newbitmap.Height;
             showpicture.Width = newbitmap.Width;
             showpicture.Show();
+
+        }
+        /// <summary>
+        /// 执行操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if(radioButton1.Checked == true)
+            {
+                newbitmap = Operation.Equalization(bitmap);
+                if(newbitmap != null)pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if(radioButton3.Checked == true)
+            {
+                newbitmap = Operation.Mosaic(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+        }
+        /// <summary>
+        /// 版本和git地址标签
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void linkLabel1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/1158558425/picequalization.git");
+        }
+        /// <summary>
+        /// 清理视图
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedItem.ToString() == "全部")
+            {
+                bitmap = null;
+                newbitmap = null;
+                Operation.newbitmap = null;
+                pictureBox1.Image = null;
+                pictureBox2.Image = null;
+                MessageBox.Show("已全部清空！", "提示：");
+            }
+            else if (comboBox1.SelectedItem.ToString() == "原始图像")
+            {
+                bitmap = null;
+                pictureBox1.Image = null;
+                MessageBox.Show("原始图已清空！", "提示：");
+            }
+            else
+            {
+                newbitmap = null;
+                pictureBox2.Image = null;
+                Operation.newbitmap = null;
+                MessageBox.Show("处理图已清空！", "提示：");
+            }
+
 
         }
     }
