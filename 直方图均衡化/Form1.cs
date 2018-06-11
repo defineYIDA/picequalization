@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using 直方图均衡化.Controls;
+using System.Runtime.InteropServices;
 
 namespace 直方图均衡化
 {
@@ -20,6 +21,7 @@ namespace 直方图均衡化
             //设置combox的初始项
             comboBox1.SelectedIndex = 0;
         }
+        
         /// <summary>
         /// 存储原始图像
         /// </summary>
@@ -144,9 +146,45 @@ namespace 直方图均衡化
                 if(newbitmap != null)pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
                 else { MessageBox.Show("原始图片为空！", "提示："); }
             }
-            if(radioButton3.Checked == true)
+            if (radioButton2.Checked == true)
+            {
+                newbitmap = Operation.Darkangle(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if (radioButton3.Checked == true)
             {
                 newbitmap = Operation.Mosaic(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if (radioButton4.Checked == true)
+            {
+                newbitmap = Operation.Decoloration(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if (radioButton5.Checked == true)
+            {
+                newbitmap = Operation.Cameo(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if (radioButton6.Checked == true)
+            {
+                newbitmap = Operation.Spread(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if (radioButton7.Checked == true)
+            {
+                newbitmap = Operation.Light_Reduction(bitmap);
+                if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
+                else { MessageBox.Show("原始图片为空！", "提示："); }
+            }
+            if (radioButton8.Checked == true)
+            {
+                newbitmap = Operation.RotateFlip(bitmap);
                 if (newbitmap != null) pictureBox2.Image = newbitmap.Clone() as Image;//显示至pictureBox2
                 else { MessageBox.Show("原始图片为空！", "提示："); }
             }
@@ -176,7 +214,7 @@ namespace 直方图均衡化
                 pictureBox2.Image = null;
                 MessageBox.Show("已全部清空！", "提示：");
             }
-            else if (comboBox1.SelectedItem.ToString() == "原始图像")
+            else if (comboBox1.SelectedItem.ToString() == "原始图")
             {
                 bitmap = null;
                 pictureBox1.Image = null;
@@ -200,6 +238,22 @@ namespace 直方图均衡化
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();//退出应用程序
+        }
+        //设置一个渐出动画
+        [DllImport("user32")]
+        private static extern bool AnimateWindow(IntPtr hwnd, int dwTime, int dwFlags);
+        private const int AW_HOR_POSITIVE = 0x0001;//自左向右显示窗口，该标志可以在滚动动画和滑动动画中使用。使用AW_CENTER标志时忽略该标志
+        private const int AW_HOR_NEGATIVE = 0x0002;//自右向左显示窗口，该标志可以在滚动动画和滑动动画中使用。使用AW_CENTER标志时忽略该标志
+        private const int AW_VER_POSITIVE = 0x0004;//自顶向下显示窗口，该标志可以在滚动动画和滑动动画中使用。使用AW_CENTER标志时忽略该标志
+        private const int AW_VER_NEGATIVE = 0x0008;//自下向上显示窗口，该标志可以在滚动动画和滑动动画中使用。使用AW_CENTER标志时忽略该标志该标志
+        private const int AW_CENTER = 0x0010;//若使用了AW_HIDE标志，则使窗口向内重叠；否则向外扩展
+        private const int AW_HIDE = 0x10000;//隐藏窗口
+        private const int AW_ACTIVE = 0x20000;//激活窗口，在使用了AW_HIDE标志后不要使用这个标志
+        private const int AW_SLIDE = 0x40000;//使用滑动类型动画效果，默认为滚动动画类型，当使用AW_CENTER标志时，这个标志就被忽略
+        private const int AW_BLEND = 0x80000;//使用淡入淡出效果
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            AnimateWindow(this.Handle, 1500, AW_BLEND);
         }
     }
 }

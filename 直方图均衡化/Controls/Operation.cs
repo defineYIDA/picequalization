@@ -120,6 +120,162 @@ namespace 直方图均衡化.Controls
             }
             return newbitmap;
         }
+        /// <summary>
+        /// 暗角处理
+        /// </summary>
+        public static Bitmap Darkangle(Bitmap bitmap)
+        {
+            if (bitmap != null)
+            {
+                newbitmap = bitmap.Clone() as Bitmap;
+                int width = newbitmap.Width;
+                int height = newbitmap.Height;
+                float cx = width / 2;
+                float cy = height / 2;
+                float maxDist = cx * cx + cy * cy;
+                float currDist = 0, factor;
+                Color pixel;
+
+                for (int i = 0; i < width; i++)
+                {
+                    for (int j = 0; j < height; j++)
+                    {
+                        currDist = ((float)i - cx) * ((float)i - cx) + ((float)j - cy) * ((float)j - cy);
+                        factor = currDist / maxDist;
+
+                        pixel = newbitmap.GetPixel(i, j);
+                        int red = (int)(pixel.R * (1 - factor));
+                        int green = (int)(pixel.G * (1 - factor));
+                        int blue = (int)(pixel.B * (1 - factor));
+                        newbitmap.SetPixel(i, j, Color.FromArgb(red, green, blue));
+                    }
+                }
+            }
+            return newbitmap;
+        }
+        /// <summary>
+        /// 亮度降低
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
+        public static Bitmap Light_Reduction(Bitmap bitmap)
+        {
+            if (bitmap != null)
+            {
+                newbitmap = bitmap.Clone() as Bitmap;
+                Color pixel;
+                int red, green, blue;
+                for (int x = 0; x < newbitmap.Width; x++)
+                {
+                    for (int y = 0; y < newbitmap.Height; y++)
+                    {
+                        pixel = newbitmap.GetPixel(x, y);
+                        red = (int)(pixel.R * 0.6);
+                        green = (int)(pixel.G * 0.6);
+                        blue = (int)(pixel.B * 0.6);
+                        newbitmap.SetPixel(x, y, Color.FromArgb(red, green, blue));
+                    }
+                }
+            }
+            return newbitmap;
+        }
+        /// <summary>
+        /// 浮雕
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
+        public static Bitmap Cameo(Bitmap bitmap)
+        {
+            if (bitmap != null)
+            {
+                newbitmap = bitmap.Clone() as Bitmap;
+                Color pixel;
+                int red, green, blue;
+                for (int x = 0; x < newbitmap.Width; x++)
+                {
+                    for (int y = 0; y < newbitmap.Height; y++)
+                    {
+                        pixel = newbitmap.GetPixel(x, y);
+                        red = (int)(255 - pixel.R);
+                        green = (int)(255 - pixel.G);
+                        blue = (int)(255 - pixel.B);
+                        newbitmap.SetPixel(x, y, Color.FromArgb(red, green, blue));
+                    }
+                }
+            }
+            return newbitmap;
+        }
+        /// <summary>
+        /// 扩散
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
+        public static Bitmap Spread(Bitmap bitmap)
+        {
+            if (bitmap != null)
+            {
+                newbitmap = bitmap.Clone() as Bitmap;
+                Color pixel;
+                int red, green, blue;
+                int flag = 0;
+                for (int x = 0; x < newbitmap.Width; x++)
+                {
+                    for (int y = 0; y < newbitmap.Height; y++)
+                    {
+                        Random ran = new Random();
+                        int RankKey = ran.Next(-5, 5);
+                        if (x + RankKey >= newbitmap.Width || y + RankKey >= newbitmap.Height || x + RankKey < 0 || y + RankKey < 0)
+                        {
+                            flag = 1;
+                            continue;
+                        }
+
+                        pixel = newbitmap.GetPixel(x + RankKey, y + RankKey);
+                        red = (int)(pixel.R);
+                        green = (int)(pixel.G);
+                        blue = (int)(pixel.B);
+                        newbitmap.SetPixel(x, y, Color.FromArgb(red, green, blue));
+                    }
+                }
+            }
+            return newbitmap;
+        }
+        /// <summary>
+        /// 去色
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
+        public static Bitmap Decoloration(Bitmap bitmap)
+        {
+            if (bitmap != null)
+            {
+                newbitmap = bitmap.Clone() as Bitmap;
+                Color pixel;
+                int gray;
+                for (int x = 0; x < newbitmap.Width; x++)
+                {
+                    for (int y = 0; y < newbitmap.Height; y++)
+                    {
+                        pixel = newbitmap.GetPixel(x, y);
+                        gray = (int)(0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B);
+                        newbitmap.SetPixel(x, y, Color.FromArgb(gray, gray, gray));
+                    }
+                }
+            }
+            return newbitmap;
+        }
+        /// <summary>
+        /// 翻转
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
+        public static Bitmap RotateFlip(Bitmap bitmap)
+        {
+            RotateFlipType rotateFlipType = RotateFlipType.Rotate180FlipY;
+            newbitmap = bitmap.Clone() as Bitmap;
+            newbitmap.RotateFlip(rotateFlipType);
+            return newbitmap;
+        }
 
     }
 }

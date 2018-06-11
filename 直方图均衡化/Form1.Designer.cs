@@ -33,11 +33,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,10 +58,12 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(803, 300);
+            this.pictureBox1.Size = new System.Drawing.Size(803, 350);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -70,10 +71,12 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 430);
+            this.pictureBox2.Location = new System.Drawing.Point(0, 380);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(803, 300);
+            this.pictureBox2.Size = new System.Drawing.Size(803, 350);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
@@ -82,8 +85,8 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(5, 404);
+            this.button1.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.Location = new System.Drawing.Point(6, 551);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 36);
             this.button1.TabIndex = 2;
@@ -94,33 +97,14 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button2.Location = new System.Drawing.Point(6, 456);
+            this.button2.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button2.Location = new System.Drawing.Point(6, 593);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(93, 36);
             this.button2.TabIndex = 3;
             this.button2.Text = "保存";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 341);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "原始图像";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 377);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "处理后图像";
             // 
             // openFileDialog1
             // 
@@ -129,6 +113,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBox1.BackgroundImage")));
+            this.groupBox1.Controls.Add(this.radioButton8);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.label3);
@@ -150,24 +136,37 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton8.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.radioButton8.Location = new System.Drawing.Point(6, 296);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(47, 16);
+            this.radioButton8.TabIndex = 21;
+            this.radioButton8.Text = "镜像";
+            this.radioButton8.UseVisualStyleBackColor = false;
+            // 
             // comboBox1
             // 
-            this.comboBox1.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "全部",
             "原始图",
             "处理图"});
-            this.comboBox1.Location = new System.Drawing.Point(5, 550);
+            this.comboBox1.Location = new System.Drawing.Point(6, 677);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(93, 20);
+            this.comboBox1.Size = new System.Drawing.Size(93, 22);
             this.comboBox1.TabIndex = 7;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button3.Location = new System.Drawing.Point(6, 508);
+            this.button3.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button3.Location = new System.Drawing.Point(6, 635);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(93, 36);
             this.button3.TabIndex = 20;
@@ -177,9 +176,10 @@
             // 
             // label3
             // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label3.Font = new System.Drawing.Font("幼圆", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(5, 12);
+            this.label3.Location = new System.Drawing.Point(2, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 32);
             this.label3.TabIndex = 19;
@@ -188,6 +188,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
             this.linkLabel1.Location = new System.Drawing.Point(3, 746);
@@ -200,9 +201,9 @@
             // 
             // button10
             // 
-            this.button10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button10.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button10.Location = new System.Drawing.Point(6, 353);
+            this.button10.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button10.Font = new System.Drawing.Font("楷体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button10.Location = new System.Drawing.Point(6, 509);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(93, 36);
             this.button10.TabIndex = 18;
@@ -213,72 +214,79 @@
             // radioButton7
             // 
             this.radioButton7.AutoSize = true;
+            this.radioButton7.BackColor = System.Drawing.Color.Transparent;
             this.radioButton7.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton7.Location = new System.Drawing.Point(6, 263);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(71, 16);
             this.radioButton7.TabIndex = 17;
             this.radioButton7.Text = "降低亮度";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.UseVisualStyleBackColor = false;
             // 
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
+            this.radioButton6.BackColor = System.Drawing.Color.Transparent;
             this.radioButton6.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton6.Location = new System.Drawing.Point(6, 226);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(47, 16);
             this.radioButton6.TabIndex = 16;
             this.radioButton6.Text = "扩散";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.UseVisualStyleBackColor = false;
             // 
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
+            this.radioButton5.BackColor = System.Drawing.Color.Transparent;
             this.radioButton5.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton5.Location = new System.Drawing.Point(6, 189);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(47, 16);
             this.radioButton5.TabIndex = 15;
             this.radioButton5.Text = "浮雕";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.UseVisualStyleBackColor = false;
             // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
+            this.radioButton4.BackColor = System.Drawing.Color.Transparent;
             this.radioButton4.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton4.Location = new System.Drawing.Point(6, 155);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(47, 16);
             this.radioButton4.TabIndex = 14;
             this.radioButton4.Text = "去色";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.UseVisualStyleBackColor = false;
             // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.BackColor = System.Drawing.Color.Transparent;
             this.radioButton3.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton3.Location = new System.Drawing.Point(6, 120);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(59, 16);
             this.radioButton3.TabIndex = 13;
             this.radioButton3.Text = "马赛克";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.UseVisualStyleBackColor = false;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
             this.radioButton2.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton2.Location = new System.Drawing.Point(6, 87);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(47, 16);
             this.radioButton2.TabIndex = 12;
             this.radioButton2.Text = "暗角";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.UseVisualStyleBackColor = false;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.radioButton1.Location = new System.Drawing.Point(6, 56);
@@ -287,7 +295,7 @@
             this.radioButton1.TabIndex = 11;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "均衡化";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -297,8 +305,6 @@
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(129, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(803, 730);
@@ -313,11 +319,13 @@
             this.ClientSize = new System.Drawing.Size(944, 761);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Picture";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -334,8 +342,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -352,6 +358,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.RadioButton radioButton8;
     }
 }
 
