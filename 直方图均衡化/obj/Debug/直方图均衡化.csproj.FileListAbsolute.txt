@@ -1,4 +1,3 @@
-c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.csprojResolveAssemblyReference.cache
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.Form1.resources
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.Properties.Resources.resources
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.csproj.GenerateResource.cache
@@ -10,3 +9,4 @@ c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直�
 c:\users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.pdb
 C:\Users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.Showpicture.resources
 C:\Users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.Views.Start_Form.resources
+C:\Users\hasee\source\repos\直方图均衡化\直方图均衡化\obj\Debug\直方图均衡化.csprojResolveAssemblyReference.cache
